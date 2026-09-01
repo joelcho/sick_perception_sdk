@@ -78,12 +78,14 @@ endif()
 #===============================================================================
 # Installation
 #===============================================================================
-install_sdk_library(
-  TARGET ${LIB_NAME}
-  DEPENDENCIES plog
-)
+if(SICK_PERCEPTION_INSTALL)
+  install_sdk_library(
+    TARGET ${LIB_NAME}
+    DEPENDENCIES plog
+  )
 
-# Install the generated version header so consumers can include it after install
-install(FILES ${COMMON_VERSION_OUT}
-  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/sick_perception_sdk/common
-)
+  # Install the generated version header so consumers can include it after install
+  install(FILES ${COMMON_VERSION_OUT}
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/sick_perception_sdk/common
+  )
+endif ()

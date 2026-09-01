@@ -16,9 +16,10 @@ project(sick_perception_sdk VERSION ${PROJECT_VERSION} LANGUAGES CXX)
 #===============================================================================
 # User configuration for the SDK package.
 #===============================================================================
-option(BUILD_DRIVERS "Add the library `drivers` to the cmake build." ON)
-option(BUILD_COMPACT_FORMAT "Add the library `compact_format` to the cmake build." ON)
-option(BUILD_SENSOR_CONFIGURATION "Add the library `sensor_configuration` to the cmake build." ON)
+option(BUILD_DRIVERS "Add the library `drivers` to the cmake build." ${SICK_PERCEPTION_MAIN_PROJECT})
+option(BUILD_COMPACT_FORMAT "Add the library `compact_format` to the cmake build." ${SICK_PERCEPTION_MAIN_PROJECT})
+option(BUILD_SENSOR_CONFIGURATION "Add the library `sensor_configuration` to the cmake build." ${SICK_PERCEPTION_MAIN_PROJECT})
+option(SICK_PERCEPTION_INSTALL "Enable the installation of the project targets." ${SICK_PERCEPTION_MAIN_PROJECT})
 option(BUILD_BENCHMARKS "Build benchmarks for the libraries" OFF)
 option(BUILD_UNIT_TESTS "Build unit tests for the libraries" OFF)
 set(BUILD_EXAMPLES_DEVICE_TYPE "" CACHE STRING "Set the device type for examples")
@@ -118,17 +119,19 @@ write_basic_package_version_file(
   COMPATIBILITY SameMajorVersion
 )
 
-install(
-  FILES
-    "${CMAKE_BINARY_DIR}/${PROJECT_NAME}-config.cmake"
-    "${CMAKE_BINARY_DIR}/${PROJECT_NAME}-config-version.cmake"
-  DESTINATION 
-    ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}
-)
+if(SICK_PERCEPTION_INSTALL)
+  install(
+    FILES
+      "${CMAKE_BINARY_DIR}/${PROJECT_NAME}-config.cmake"
+      "${CMAKE_BINARY_DIR}/${PROJECT_NAME}-config-version.cmake"
+    DESTINATION
+      ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}
+  )
 
-install(
-  EXPORT ${PROJECT_NAME}-config
-  FILE ${PROJECT_NAME}-config-targets.cmake
-  NAMESPACE ${PROJECT_NAME}::
-  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}
-)
+  install(
+    EXPORT ${PROJECT_NAME}-config
+    FILE ${PROJECT_NAME}-config-targets.cmake
+    NAMESPACE ${PROJECT_NAME}::
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}
+  )
+endif ()

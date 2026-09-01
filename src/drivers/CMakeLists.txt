@@ -46,7 +46,9 @@ target_enable_clang_tidy(
 #===============================================================================
 # Installation
 #===============================================================================
-install_sdk_library(
-  TARGET ${LIB_NAME}
-  plog
-)
+if(SICK_PERCEPTION_INSTALL)
+  install_sdk_library(
+    TARGET ${LIB_NAME}
+    plog
+  )
+endif ()

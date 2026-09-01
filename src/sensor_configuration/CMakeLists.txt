@@ -67,11 +67,13 @@ endif()
 #===============================================================================
 # Installation
 #===============================================================================
-install_sdk_library(
-  TARGET
-    ${LIB_NAME}
-  DEPENDENCIES
-    httplib
-    nlohmann_json
-    OpenSSL
-)
+if(SICK_PERCEPTION_INSTALL)
+  install_sdk_library(
+    TARGET
+      ${LIB_NAME}
+    DEPENDENCIES
+      httplib
+      nlohmann_json
+      OpenSSL
+  )
+endif ()

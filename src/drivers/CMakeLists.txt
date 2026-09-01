@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.22)
 
-include(${CMAKE_SOURCE_DIR}/cmake/install-library.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/compiler-defines.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/clang-tidy.cmake)
+include(${SICK_PERCEPTION_ROOT_PROJECT}/cmake/install-library.cmake)
+include(${SICK_PERCEPTION_ROOT_PROJECT}/cmake/compiler-defines.cmake)
+include(${SICK_PERCEPTION_ROOT_PROJECT}/cmake/clang-tidy.cmake)
 
 set(LIB_NAME "drivers")
 

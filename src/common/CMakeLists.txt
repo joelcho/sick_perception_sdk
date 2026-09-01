@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.22)
 
-include(${CMAKE_SOURCE_DIR}/cmake/install-library.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/compiler-defines.cmake)
-include(${CMAKE_SOURCE_DIR}/cmake/clang-tidy.cmake)
+include(${SICK_PERCEPTION_ROOT_PROJECT}/cmake/install-library.cmake)
+include(${SICK_PERCEPTION_ROOT_PROJECT}/cmake/compiler-defines.cmake)
+include(${SICK_PERCEPTION_ROOT_PROJECT}/cmake/clang-tidy.cmake)
 
 set(LIB_NAME "common")
 
@@ -57,7 +57,7 @@ target_enable_clang_tidy(
 )
 
 # Configure version header for build
-set(COMMON_VERSION_IN ${CMAKE_SOURCE_DIR}/cmake/version.hpp.in)
+set(COMMON_VERSION_IN ${SICK_PERCEPTION_ROOT_PROJECT}/cmake/version.hpp.in)
 set(COMMON_VERSION_OUT ${CMAKE_BINARY_DIR}/generated/include/sick_perception_sdk/common/version.hpp)
 
 # Make sure the output directory exists before writing the file

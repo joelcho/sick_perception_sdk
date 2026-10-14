@@ -51,7 +51,7 @@ public:
         newDataTimeout,
         std::move(streamName)
       )
-  { }
+  { start(); }
 
   ~TcpReceiverThread() override
   {

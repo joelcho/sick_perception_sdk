@@ -48,7 +48,7 @@ public:
         newDataTimeout,
         std::move(streamName)
       )
-  { }
+  {  start(); }
 
   void joinMulticastGroup(IpV4Address const& multicastGroupAddress, IpV4Address const& localInterfaceAddress)
   {

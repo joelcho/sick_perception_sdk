@@ -50,7 +50,7 @@ public:
 
     LOG_INFO(this->m_streamName) << "Setting socket timeout to " << firstDataTimeout.count() << " ms.";
     m_socket->setTimeout(firstDataTimeout);
-    start();
+    // start();
   }
 
   ReceiverThread(ReceiverThread const&)                    = delete;

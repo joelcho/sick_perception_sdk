@@ -48,7 +48,7 @@ public:
         newDataTimeout,
         std::move(streamName)
       )
-  {  start(); }
+  {  ReceiverThread<typename ParserT::DataT>::start(); }
 
   void joinMulticastGroup(IpV4Address const& multicastGroupAddress, IpV4Address const& localInterfaceAddress)
   {
